@@ -13,11 +13,13 @@ const App = () => {
     <Provider store={store}>
       <BrowserRouter>
         <Header />
-        <Routes>
-          <Route path="/" element={<HomePage showCarausel={true} />} />
-          <Route path="/product/:id" element={<Product />} />
-          <Route path="/cart" element={<Cart />} />
-        </Routes>
+        <div id="root">
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/product/:id" element={<Product />} />
+            <Route path="/cart" element={<Cart />} />
+          </Routes>
+        </div>
         <Footer />
       </BrowserRouter>
     </Provider>

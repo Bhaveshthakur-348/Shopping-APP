@@ -24,7 +24,7 @@ const Cart = () => {
         Clear Cart
       </button>
       <div className="w-full md:w-6/12 lg:w-4/12 m-auto">
-        {cartSelectedProduct.map((item) => (
+        {cartSelectedProduct?.map((item) => (
           <div
             key={item.id}
             className="p-2 m-2 border-gray-200 border-b-2 text-left flex flex-col md:flex-row"
