@@ -1,7 +1,14 @@
+import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
+import { addItem } from "../utils/addSlice";
 
 const CardList = ({ product }) => {
   const { id, title, price, rating, thumbnail } = product;
+
+  const dispatch = useDispatch();
+  const handleAdd = (item) => {
+    dispatch(addItem(item));
+  };
 
   return (
     <div className="flex flex-col items-center p-4 bg-white border rounded shadow-md transition duration-300 hover:shadow-lg">
@@ -20,6 +27,12 @@ const CardList = ({ product }) => {
           <span className="text-gray-600 ml-1">{rating}</span>
           <span className="text-yellow-500">&#9733;</span>
         </div>
+        <button
+          onClick={() => handleAdd(product)}
+          className="bg-blue-500 text-white px-4 py-2 rounded-md mt-4 mr-2"
+        >
+          Add to Cart
+        </button>
         <Link to={"/product/" + id}>
           <button className="mt-4 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 focus:outline-none focus:shadow-outline-blue active:bg-blue-800">
             View

@@ -7,7 +7,8 @@ import { Product_API } from "../utils/constants";
 
 const Product = () => {
   const { id } = useParams();
-  const [data, setData] = useState();
+  const [data, setData] = useState(null);
+  const [loading, setLoading] = useState(true);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -15,9 +16,13 @@ const Product = () => {
   }, []);
 
   const getProductData = async () => {
-    const response = await fetch(Product_API + id);
-    const jsonData = await response.json();
-    setData(jsonData);
+    try {
+      const response = await fetch(Product_API + id);
+      const jsonData = await response.json();
+      setData(jsonData);
+    } finally {
+      setLoading(false);
+    }
   };
 
   const handleAdd = (item) => {
@@ -26,7 +31,9 @@ const Product = () => {
 
   return (
     <div className="flex flex-col md:flex-row justify-around p-4">
-      {data && (
+      {loading ? (
+        <div className="w-full md:w-1/3 mb-4 md:mb-0 animate-pulse bg-gray-300 h-64"></div>
+      ) : (
         <>
           <div className="w-full md:w-1/3 mb-4 md:mb-0">
             <Carousel images={data.images} />
