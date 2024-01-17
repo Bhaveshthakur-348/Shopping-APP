@@ -10,6 +10,13 @@ const CardList = ({ product }) => {
     dispatch(addItem(item));
   };
 
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
+
   const truncateTitle = (title, maxLength) => {
     return title.length > maxLength
       ? title.substring(0, maxLength - 3) + "..."
@@ -42,7 +49,10 @@ const CardList = ({ product }) => {
           Add to Cart
         </button>
         <Link to={"/product/" + id}>
-          <button className="mt-4 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 focus:outline-none focus:shadow-outline-blue active:bg-blue-800">
+          <button
+            onClick={scrollToTop}
+            className="mt-4 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 focus:outline-none focus:shadow-outline-blue active:bg-blue-800"
+          >
             View
           </button>
         </Link>

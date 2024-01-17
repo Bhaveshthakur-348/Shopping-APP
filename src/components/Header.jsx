@@ -13,8 +13,15 @@ const Header = () => {
     dispatch(updateSearchTerm(e.target.value));
   };
 
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
+
   return (
-    <header className="grid grid-cols-3 p-4 bg-white text-black shadow-lg">
+    <header className="grid grid-cols-3 p-4 bg-white text-black shadow-lg sticky top-0 left-0 right-0 z-10">
       <div className="flex items-center">
         <a href="/">
           <img
@@ -40,7 +47,11 @@ const Header = () => {
 
       <div className="flex items-center justify-end">
         <img className="h-7 w-7 mr-2" src={User_Icon} alt="user" />
-        <Link to="/cart" className="flex items-center hover:text-gray-300">
+        <Link
+          to="/cart"
+          onClick={scrollToTop}
+          className="flex items-center hover:text-gray-300"
+        >
           <svg
             viewBox="0 0 24 24"
             fill="black"
