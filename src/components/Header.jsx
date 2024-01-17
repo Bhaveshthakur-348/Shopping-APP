@@ -2,6 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { updateSearchTerm } from "../utils/searchSlice";
 import shopIcon from "../assets/shopIcon.jpg";
+import { User_Icon } from "../utils/constants";
 
 const Header = () => {
   const cartItems = useSelector((store) => store.add.items);
@@ -14,7 +15,6 @@ const Header = () => {
 
   return (
     <header className="grid grid-cols-3 p-4 bg-white text-black shadow-lg">
-      {/* First Part - Logo, Home, and Product */}
       <div className="flex items-center">
         <a href="/">
           <img
@@ -26,12 +26,8 @@ const Header = () => {
         <p className="mr-6 hover:text-gray-300">
           <Link to="/">Home</Link>
         </p>
-        {/* <p className=" hover:text-gray-300">
-          <Link to="/product">Product</Link>
-        </p> */}
       </div>
 
-      {/* Second Part - Search Input */}
       <div className="col-span-1 flex items-center justify-center">
         <input
           className="text-black border rounded px-2 py-1 w-full sm:w-64"
@@ -42,8 +38,8 @@ const Header = () => {
         />
       </div>
 
-      {/* Third Part - Cart */}
       <div className="flex items-center justify-end">
+        <img className="h-7 w-7 mr-2" src={User_Icon} alt="user" />
         <Link to="/cart" className="flex items-center hover:text-gray-300">
           <svg
             viewBox="0 0 24 24"
