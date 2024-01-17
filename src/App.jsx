@@ -5,18 +5,18 @@ import Product from "./components/Product";
 import { Provider } from "react-redux";
 import store from "./utils/store";
 import Cart from "./components/Cart";
-import Footer from "./components/footer";
+import Footer from "./components/Footer";
 
 const App = () => {
   return (
     <Provider store={store}>
       <BrowserRouter>
         <Header />
-          <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/product/:id" element={<Product />} />
-            <Route path="/cart" element={<Cart />} />
-          </Routes>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/product/:id" element={<Product />} />
+          <Route path="/cart" element={<Cart />} />
+        </Routes>
         <Footer />
       </BrowserRouter>
     </Provider>
