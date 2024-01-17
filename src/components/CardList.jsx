@@ -10,6 +10,12 @@ const CardList = ({ product }) => {
     dispatch(addItem(item));
   };
 
+  const truncateTitle = (title, maxLength) => {
+    return title.length > maxLength
+      ? title.substring(0, maxLength - 3) + "..."
+      : title;
+  };
+
   return (
     <div className="flex flex-col items-center p-4 bg-white border rounded shadow-md transition duration-300 hover:shadow-lg">
       <Link to={"/product/" + id}>
@@ -21,7 +27,9 @@ const CardList = ({ product }) => {
       </Link>
 
       <div className="text-center">
-        <h2 className="text-lg font-semibold">{title}</h2>
+        <h2 className="sm:text-md  md:text-lg font-semibold">
+          {truncateTitle(title, 25)}
+        </h2>
         <p className="text-gray-800">${price}</p>
         <div className="flex items-center justify-center mt-2">
           <span className="text-gray-600 ml-1">{rating}</span>
