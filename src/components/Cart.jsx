@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { addItem, clearCart } from "../utils/addSlice";
+import { addItem, clearCart, removeItem } from "../utils/addSlice";
 
 const Cart = () => {
   const selecteddata = useSelector(addItem);
@@ -9,6 +9,10 @@ const Cart = () => {
 
   const handleClearCart = () => {
     dispatch(clearCart());
+  };
+
+  const removeCartItem = (itemId) => {
+    dispatch(removeItem(itemId));
   };
 
   return (
@@ -35,6 +39,9 @@ const Cart = () => {
             <div className="md:w-3/12 p-4">
               <img src={item.thumbnail} className="w-full" alt={item.title} />
             </div>
+            <button onClick={() => removeCartItem(item.id)} className="">
+              ❌
+            </button>
           </div>
         ))}
       </div>
