@@ -9,8 +9,11 @@ const addSlice = createSlice({
     addItem: (state, action) => {
       state.items.push(action.payload);
     },
+    clearCart: () => {
+      return { items: [] }; 
+    },
   },
 });
 
-export const { addItem } = addSlice.actions;
+export const { addItem, clearCart } = addSlice.actions;
 export default addSlice.reducer;

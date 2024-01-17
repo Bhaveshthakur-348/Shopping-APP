@@ -1,12 +1,24 @@
-import { useSelector } from "react-redux";
-import { addItem } from "../utils/addSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { addItem, clearCart } from "../utils/addSlice";
 
 const Cart = () => {
   const selecteddata = useSelector(addItem);
   const cartSelectedProduct = selecteddata.payload.add.items;
 
+  const dispatch = useDispatch();
+
+  const handleClearCart = () => {
+    dispatch(clearCart());
+  };
+
   return (
     <div className="text-center m-4 p-4">
+      <button
+        className="mt-4 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 focus:outline-none focus:shadow-outline-blue active:bg-blue-800"
+        onClick={handleClearCart}
+      >
+        Clear Cart
+      </button>
       <div className="w-full md:w-6/12 lg:w-4/12 m-auto">
         {cartSelectedProduct.map((item) => (
           <div

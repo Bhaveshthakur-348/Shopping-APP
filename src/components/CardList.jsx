@@ -1,15 +1,7 @@
-import { useDispatch } from "react-redux";
-import { addItem } from "../utils/addSlice";
 import { Link } from "react-router-dom";
 
 const CardList = ({ product }) => {
   const { id, title, price, rating, thumbnail } = product;
-
-  // const dispatch = useDispatch();
-
-  // const handleAdd = (item) => {
-  //   dispatch(addItem(item));
-  // };
 
   return (
     <div className="flex flex-col items-center p-4 bg-white border rounded shadow-md transition duration-300 hover:shadow-lg">
